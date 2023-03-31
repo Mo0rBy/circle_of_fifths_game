@@ -1,0 +1,43 @@
+.circle-of-fifths-outer {
+    width: 800px;
+    height: 800px;
+    background-color: grey ;
+    border-radius: 50%;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 10%;
+    border: 5px solid black;
+  }
+  
+  .circle-of-fifths-inner {
+    width: 500px;
+    height: 500px;
+    background-color: rgb(172, 171, 171) ;
+    border-radius: 50%;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 10%;
+    border: 5px solid black;
+  }
+  
+  .circle-of-fifths-center {
+    width: 200px;
+    height: 200px;
+    background-color: rgb(255, 255, 255) ;
+    border-radius: 50%;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 10%;
+    border: 5px solid black;
+  
+    font-size: 25px;
+  }
