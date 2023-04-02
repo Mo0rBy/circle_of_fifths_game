@@ -1,11 +1,12 @@
-import Circle from './components/circle/Circle';
+import CircleEqualSectors from './components/CircleEqualSectors/CircleEqualSectors';
 
-const circleRadius = 600
+const circleRadius = 400
+const numSectors = 12
 
 export default function App() {
   return (
     <div className="App">
-      <Circle radius={circleRadius}/>
+      <CircleEqualSectors radius={circleRadius} numSectors={numSectors}/>
     </div>
   );
 }

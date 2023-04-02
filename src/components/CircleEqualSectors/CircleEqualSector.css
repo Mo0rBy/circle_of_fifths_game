@@ -1,0 +1,21 @@
+.circle-sector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    stroke: black;
+    stroke-width: 5px;
+    /* outline: black 5px; */
+}
+
+div {
+    margin: 50px;
+    padding: 50px;
+    border: 50px;
+}
+
+svg {
+    margin: 50px;
+    padding: 50px;
+    border: 50px;
+}
