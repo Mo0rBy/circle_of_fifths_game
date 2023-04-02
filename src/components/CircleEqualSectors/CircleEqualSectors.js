@@ -1,7 +1,9 @@
-export default function CircleEqualSectors({ radius: outerRadius, numSectors }) {
+import Segment from "../Segment/Segment"
+
+export default function CircleEqualSectors({ outerRadius, numSectors }) {
 
   const diameter = outerRadius * 2
-  const innerRadius = outerRadius * 0.75
+  const innerRadius = outerRadius * 0.6
 
   // Using 2Pi Radians here, not 360 degrees
   function getCoordinatesForPercent(percent, circleRadius) {
@@ -11,7 +13,7 @@ export default function CircleEqualSectors({ radius: outerRadius, numSectors }) 
     return [x, y]
   }
 
-  var sectors = []
+  var segments = []
   let cumulativePercent = 0
   const percentRoundCircle = 1 / numSectors
 
@@ -31,16 +33,16 @@ export default function CircleEqualSectors({ radius: outerRadius, numSectors }) 
       `L ${X4} ${Y4}`, // Draw line innerRadius coordinate
       `A ${innerRadius} ${innerRadius} ${xAxisRotation} ${largeArcFlag} 0 ${X1} ${Y1}` // Draw arc back to starting point (along innerRadius)
     ].join(' ')
-    sectors.push({ key: i, pathData: pathData })
+    segments.push({ key: i, pathData: pathData })
   }
 
   return (
     <div>
       <svg height={diameter} width={diameter}>
         <circle r={outerRadius} cx={outerRadius} cy={outerRadius} fill="grey"/>
-        <path d={sectors[0].pathData}/>
-        {sectors.map(sector => 
-          <path d={sector.pathData} stroke="red" fill='blue'/>
+        <path d={segments[0].pathData}/>
+        {segments.map(segment => 
+          <Segment pathData={segment.pathData}/>
         )}
       </svg>
     </div>
