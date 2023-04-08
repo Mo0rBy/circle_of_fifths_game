@@ -1,12 +1,17 @@
-import CircleEqualSectors from './components/CircleEqualSectors/CircleEqualSectors';
+import * as d3 from "d3";
+import './App.css'
 
-const circleRadius = 400
+import CircleOfFifths from "./components/CircleOfFifths/CircleOfFifths";
+import './components/CircleOfFifths/CircleOfFifths.css'
+
+const circleRadius = 350
 const numSectors = 12
 
 export default function App() {
+  const diameter = circleRadius * 2
   return (
-    <div className="App">
-      <CircleEqualSectors outerRadius={circleRadius} numSectors={numSectors}/>
+    <div className="svg-container">
+      <CircleOfFifths radius={circleRadius}/>
     </div>
   );
 }
