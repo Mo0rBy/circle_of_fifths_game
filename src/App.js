@@ -4,14 +4,14 @@ import './App.css'
 import CircleOfFifths from "./components/CircleOfFifths/CircleOfFifths";
 import './components/CircleOfFifths/CircleOfFifths.css'
 
-const circleRadius = 350
+const circleRadius = 400
 const numSectors = 12
 
 export default function App() {
   const diameter = circleRadius * 2
   return (
     <div className="svg-container">
-      <CircleOfFifths radius={circleRadius}/>
+      <CircleOfFifths outerRadius={circleRadius} numSectors={numSectors}/>
     </div>
   );
 }
