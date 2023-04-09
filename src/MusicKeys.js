@@ -122,7 +122,7 @@ const F_Major = {
 // i.e. F# Major = G♭ Major
 // How should enharmonic equivalents be dealth with in general??
 
-musicKeys = [
+const musicKeys = [
     C_Major,
     G_Major,
     D_Major,
@@ -136,3 +136,7 @@ musicKeys = [
     B_flat_Major,
     F_Major
 ]
+
+// export default musicKeys;
+
+export { C_Major, G_Major };
