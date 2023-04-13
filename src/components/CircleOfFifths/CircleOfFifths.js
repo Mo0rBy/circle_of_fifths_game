@@ -19,31 +19,31 @@ export default function CircleOfFifths() {
 
   const svgRef = useRef();
 
-  // useEffect(() => {
-  //   const svg = d3.select(svgRef.current);
-  //   svg
-  //     .selectAll("circle")
-  //     .data(data)
-  //     .join("circle")
-  //     .attr("cx", "200")
-  //     .attr("cy", "200")
-  //     .attr("r", "50")
-  //     .attr("stroke", "red");
-  // }, [data])
-
+  // Adds the startAngle and endAngle of each segment to an array
+  // Uses cumulativeAngle to keep track of each segment
   var cumulativeAngle = 0;
   for (let i =0; i<data.length; i++) {
+    let startAngle = cumulativeAngle;
     cumulativeAngle += sectorAngle;
-    angles.push(cumulativeAngle);
+    let endAngle = cumulativeAngle;
+    angles.push({startAngle, endAngle});
   }
 
-  const arc = d3.arc()
-    .innerRadius(innerRadius)
-    .outerRadius(outerRadius)
-    .startAngle(0)
-    .endAngle(sectorAngle);
+  const arcGenerator = d3.arc()
+                      .innerRadius(innerRadius)
+                      .outerRadius(outerRadius);
 
-  console.log(arc);
+  useEffect(() => {
+    const circleSegments = d3.selectAll('.circle-segment');
+
+    circleSegments
+      .data(angles)
+      .attr('d', function(angle){ 
+        return arcGenerator(
+          {startAngle: angle.startAngle, endAngle: angle.endAngle}
+        );}
+      );
+  }, [])
 
   // TODO: Import music keys data (just try 1 array of chords first e.g. C Major)
   //       Map the chords to segments of the circle. Does D3 make this easier to 
@@ -56,12 +56,7 @@ export default function CircleOfFifths() {
       height={diameter}
       width={diameter}>
         <g transform='translate(400,400)'>
-          {angles.map(angle => <path d={d3.arc()
-    .innerRadius(innerRadius)
-    .outerRadius(outerRadius)
-    .startAngle(0)
-    .endAngle(sectorAngle)} stroke='red'/>)}
-          {/* <path d={arc()} stroke='red'/> */}
+          {angles.map(angle => <path className='circle-segment' stroke='red'/>)}
         </g>
       {/* <circle
         r={radius}
