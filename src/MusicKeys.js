@@ -125,11 +125,11 @@
 /* ---------------------------------------------- - --------------------------------------------- */
 // ^^ Above was the orginal idea for key objects, have now realised I will need metadata of the segments as well
 
-const C_Major = {
+var C_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    selected: null
+    selected: true
   }
   // Don't need this for now
   // chords: {
@@ -143,95 +143,95 @@ const C_Major = {
   // }
 }
 
-const G_Major = {
+var G_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    selected: null
+    selected: false
   }
 }
 
-const D_Major = {
+var D_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    selected: null
+    selected: true
   }
 }
 
-const A_Major = {
+var A_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    selected: null
+    selected: false
   }
 }
 
-const E_Major = {
+var E_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    selected: null
+    selected: false
   }
 }
 
-const B_Major = {
+var B_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    selected: null
+    selected: false
   }
 }
 
-const F_sharp_Major = {
+var F_sharp_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    selected: null
+    selected: false
   }
 }
 
-const C_sharp_Major = {
+var C_sharp_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    selected: null
+    selected: false
   }
 }
 
-const A_flat_Major = {
+var A_flat_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    selected: null
+    selected: false
   }
 }
 
-const E_flat_Major = {
+var E_flat_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    selected: null
+    selected: false
   }
 }
 
-const B_flat_Major = {
+var B_flat_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    selected: null
+    selected: false
   }
 }
 
-const F_Major = {
+var F_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    selected: null
+    selected: false
   }
 }
 
-const musicKeys = [
+var musicKeys = [
     C_Major,
     G_Major,
     D_Major,
