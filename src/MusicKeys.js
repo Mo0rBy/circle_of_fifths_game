@@ -1,146 +1,22 @@
-// const C_Major = {
-//     chord1: "C Major",
-//     chord2: "D minor",
-//     chord3: "E minor",
-//     chord4: "F Major",
-//     chord5: "G Major",
-//     chord6: "A minor",
-//     chord7: "B diminished"
-// }
-
-// const G_Major = {
-//     chord1: "G Major",
-//     chord2: "A minor",
-//     chord3: "B minor",
-//     chord4: "C Major",
-//     chord5: "D Major",
-//     chord6: "E minor",
-//     chord7: "F# diminished"
-// }
-
-// const D_Major = {
-//     chord1: "D Major",
-//     chord2: "E minor",
-//     chord3: "F# minor",
-//     chord4: "G Major",
-//     chord5: "A Major",
-//     chord6: "B minor",
-//     chord7: "C# diminished"
-// }
-
-// const A_Major = {
-//     chord1: "A Major",
-//     chord2: "B minor",
-//     chord3: "C# minor",
-//     chord4: "D Major",
-//     chord5: "E Major",
-//     chord6: "F# minor",
-//     chord7: "G# diminished"
-// }
-
-// const E_Major = {
-//     chord1: "E Major",
-//     chord2: "F# minor",
-//     chord3: "G# minor",
-//     chord4: "A Major",
-//     chord5: "B Major",
-//     chord6: "C# minor",
-//     chord7: "D# diminished"
-// }
-
-// const B_Major = {
-//     chord1: "B Major",
-//     chord2: "C# minor",
-//     chord3: "D# minor",
-//     chord4: "E Major",
-//     chord5: "F# Major",
-//     chord6: "G# minor",
-//     chord7: "A# diminished"
-// }
-
-// const F_sharp_Major = {
-//     chord1: "F# Major",
-//     chord2: "G# minor",
-//     chord3: "A# minor",
-//     chord4: "B Major",
-//     chord5: "C# Major",
-//     chord6: "D# minor",
-//     chord7: "E# diminished"
-// }
-
-// const C_sharp_Major = {
-//     chord1: "C# Major",
-//     chord2: "D# minor",
-//     chord3: "E# minor",
-//     chord4: "F# Major",
-//     chord5: "G# Major",
-//     chord6: "A# minor",
-//     chord7: "B# diminished"
-// }
-
-// const A_flat_Major = {
-//     chord1: "A♭ Major",
-//     chord2: "B♭ minor",
-//     chord3: "C minor",
-//     chord4: "D♭ Major",
-//     chord5: "E♭ Major",
-//     chord6: "F minor",
-//     chord7: "G diminished"
-// }
-
-// const E_flat_Major = {
-//     chord1: "E♭ Major",
-//     chord2: "F minor",
-//     chord3: "G minor",
-//     chord4: "A♭ Major",
-//     chord5: "B♭ Major",
-//     chord6: "C minor",
-//     chord7: "D diminished"
-// }
-
-// const B_flat_Major = {
-//     chord1: "B♭ Major",
-//     chord2: "C minor",
-//     chord3: "D minor",
-//     chord4: "E♭ Major",
-//     chord5: "F Major",
-//     chord6: "G minor",
-//     chord7: "A diminished"
-// }
-
-// const F_Major = {
-//     chord1: "F Major",
-//     chord2: "G minor",
-//     chord3: "A minor",
-//     chord4: "B♭ Major",
-//     chord5: "C Major",
-//     chord6: "D minor",
-//     chord7: "E diminished"
-// }
-
-// How to deal with 'alternative' forms of the key?
+// TODO: How to deal with 'alternative' forms of the key?
 // i.e. F# Major = G♭ Major
 // How should enharmonic equivalents be dealth with in general??
-
-/* ---------------------------------------------- - --------------------------------------------- */
-// ^^ Above was the orginal idea for key objects, have now realised I will need metadata of the segments as well
 
 var C_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    selected: true
-  }
-  // Don't need this for now
-  // chords: {
-  //   1: "C Major",
-  //   2: "D minor",
-  //   3: "E minor",
-  //   4: "F Major",
-  //   5: "G Major",
-  //   6: "A minor",
-  //   7: "B diminished"
-  // }
+    selected: false
+  },
+  chords: [
+    "C Major",
+    "D minor",
+    "E minor",
+    "F Major",
+    "G Major",
+    "A minor",
+    "B diminished"
+  ]
 }
 
 var G_Major = {
@@ -148,15 +24,33 @@ var G_Major = {
     startAngle: null,
     endAngle: null,
     selected: false
-  }
+  },
+  chords: [
+    "G Major",
+    "A minor",
+    "B minor",
+    "C Major",
+    "D Major",
+    "E minor",
+    "F# diminished"
+  ]
 }
 
 var D_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    selected: true
-  }
+    selected: false
+  },
+  chords: [
+    "D Major",
+    "E minor",
+    "F# minor",
+    "G Major",
+    "A Major",
+    "B minor",
+    "C# diminished"
+  ]
 }
 
 var A_Major = {
@@ -164,7 +58,16 @@ var A_Major = {
     startAngle: null,
     endAngle: null,
     selected: false
-  }
+  },
+  chords: [
+    "A Major",
+    "B minor",
+    "C# minor",
+    "D Major",
+    "E Major",
+    "F# minor",
+    "G# diminished"
+  ]
 }
 
 var E_Major = {
@@ -172,7 +75,16 @@ var E_Major = {
     startAngle: null,
     endAngle: null,
     selected: false
-  }
+  },
+  chords: [
+    "E Major",
+    "F minor",
+    "G# minor",
+    "A Major",
+    "B Major",
+    "C# minor",
+    "D# diminished"
+  ]
 }
 
 var B_Major = {
@@ -180,7 +92,16 @@ var B_Major = {
     startAngle: null,
     endAngle: null,
     selected: false
-  }
+  },
+  chords: [
+    "B Major",
+    "C# minor",
+    "D# minor",
+    "E Major",
+    "F# Major",
+    "G# minor",
+    "A# diminished"
+  ]
 }
 
 var F_sharp_Major = {
@@ -188,7 +109,16 @@ var F_sharp_Major = {
     startAngle: null,
     endAngle: null,
     selected: false
-  }
+  },
+  chords: [
+    "F# Major",
+    "G# minor",
+    "A# minor",
+    "B Major",
+    "C# Major",
+    "D# minor",
+    "E# diminished"
+  ]
 }
 
 var C_sharp_Major = {
@@ -196,7 +126,16 @@ var C_sharp_Major = {
     startAngle: null,
     endAngle: null,
     selected: false
-  }
+  },
+  chords: [
+    "C# Major",
+    "D# minor",
+    "E# minor",
+    "F# Major",
+    "G# Major",
+    "A# minor",
+    "B# diminished"
+  ]
 }
 
 var A_flat_Major = {
@@ -204,7 +143,16 @@ var A_flat_Major = {
     startAngle: null,
     endAngle: null,
     selected: false
-  }
+  },
+  chords: [
+    "A♭ Major",
+    "B♭ minor",
+    "C minor",
+    "D♭ Major",
+    "E♭ Major",
+    "F minor",
+    "G diminished"
+  ]
 }
 
 var E_flat_Major = {
@@ -212,7 +160,16 @@ var E_flat_Major = {
     startAngle: null,
     endAngle: null,
     selected: false
-  }
+  },
+  chords: [
+    "E♭ Major",
+    "F minor",
+    "G minor",
+    "A♭ Major",
+    "B♭ Major",
+    "C minor",
+    "D diminished"
+  ]
 }
 
 var B_flat_Major = {
@@ -220,7 +177,16 @@ var B_flat_Major = {
     startAngle: null,
     endAngle: null,
     selected: false
-  }
+  },
+  chords: [
+    "B♭ Major",
+    "C minor",
+    "D minor",
+    "E♭ Major",
+    "F Major",
+    "G minor",
+    "A diminished"
+  ]
 }
 
 var F_Major = {
@@ -228,7 +194,16 @@ var F_Major = {
     startAngle: null,
     endAngle: null,
     selected: false
-  }
+  },
+  chords: [
+    "F Major",
+    "G minor",
+    "A minor",
+    "B♭ Major",
+    "C Major",
+    "D minor",
+    "E diminished"
+  ]
 }
 
 var musicKeys = [
@@ -258,6 +233,5 @@ for (let i = 0; i < musicKeys.length; i++) {
   musicKeys[i].segmentMetadata.startAngle = startAngle;
   musicKeys[i].segmentMetadata.endAngle = endAngle;
 }
-
 
 export default musicKeys;
