@@ -15,7 +15,9 @@ export default function CircleOfFifths() {
 
   useEffect(() => {
     let newMusicKeysObject = musicKeysObject;
-    newMusicKeysObject[11].segmentMetadata.selected = true;
+    for (let i=0; i<newMusicKeysObject.length; i++) {
+      newMusicKeysObject[i].segmentMetadata.selected = true;
+    }
     setMusicKeysObject([...newMusicKeysObject]);
   }, [])
 
@@ -30,6 +32,17 @@ export default function CircleOfFifths() {
   //   })
   // }
 
+  const onMouseUpHandler = (index) => {
+    console.log(index)
+    let newMusicKeysObject = musicKeysObject;
+    if (newMusicKeysObject[index].segmentMetadata.selected) {
+      newMusicKeysObject[index].segmentMetadata.selected = false;
+    } else {
+      newMusicKeysObject[index].segmentMetadata.selected = true;
+    }
+    setMusicKeysObject([...newMusicKeysObject]);
+  }
+
   const calculateArc = (startAngle, endAngle) => {
     return d3.arc()
       .innerRadius(innerRadius)
@@ -42,7 +55,7 @@ export default function CircleOfFifths() {
     let arc = calculateArc(musicKey.segmentMetadata.startAngle, musicKey.segmentMetadata.endAngle);
     let [arcCenterX, arcCenterY] = arc.centroid();
     if (musicKey.segmentMetadata.selected === true) {
-      return <g key={index}>
+      return <g key={index} onMouseUp={() => onMouseUpHandler(index)}>
               <path 
                 d={arc.apply()} // apply() is needed to generate the string that goes into the 'd' attribute
                 stroke='red'
