@@ -1,7 +1,5 @@
 import './App.css'
-
 import CircleOfFifths from "./components/CircleOfFifths/CircleOfFifths";
-import './components/CircleOfFifths/CircleOfFifths.css'
 
 const circleRadius = 400
 

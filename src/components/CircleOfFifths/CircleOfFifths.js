@@ -1,14 +1,11 @@
-import * as d3 from 'd3';
+import './CircleOfFifths.css';
 import { useEffect, useState } from 'react';
+import * as d3 from 'd3';
 import musicKeys from '../../MusicKeys';
 
 export default function CircleOfFifths({ outerRadius }) {
-// export default function CircleOfFifths() {
-
-  // const outerRadius = 400;
 
   const diameter = outerRadius * 2;
-  // const diameter = 980;
   const innerRadius = outerRadius * 0.6;
 
   const [musicKeysObject, setMusicKeysObject] = useState(musicKeys);
