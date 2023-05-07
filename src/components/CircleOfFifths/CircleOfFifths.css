@@ -1,3 +1,12 @@
+.circle-of-fifths-container {
+  margin: 50px;
+  text-align: center;
+}
+
+.circle-container {
+  text-align: center;
+}
+
 .base-circle {
   fill: grey;
   padding: 5px;
@@ -7,27 +16,20 @@
   stroke-width: 5px;
 }
 
-.circle-segment.isVisible path {
-  fill: #D7DCDF;
-  stroke: black;
-  stroke-width: 5px;
+.circle-segment {
+  visibility: none;
 }
 
-.circle-segment.isVisible text {
-  font-size: 30px;
-  justify-content: center;
-  align-items: center;
+.circle-segment.isVisible {
+  visibility: visible;
+  > path {
+    fill: #D7DCDF;
+    stroke: black;
+    stroke-width: 5px;
+  }
+  > text {
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+  }
 }
-
-.circle-segment path {
-  fill: red;
-  stroke: black;
-  stroke-width: 5px;
-}
-
-/* .circle-segment text {
-  font-size: 30px;
-  justify-content: center;
-  align-items: center;
-  visibility: hidden;
-} */

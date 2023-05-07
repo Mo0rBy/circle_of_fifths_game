@@ -1,15 +1,14 @@
 import * as d3 from 'd3';
 import { useEffect, useState } from 'react';
 import musicKeys from '../../MusicKeys';
-import { isVisible } from '@testing-library/user-event/dist/utils';
 
-// export default function CircleOfFifths({ outerRadius, numSectors }) {
-export default function CircleOfFifths() {
+export default function CircleOfFifths({ outerRadius }) {
+// export default function CircleOfFifths() {
 
-  const outerRadius = 400;
+  // const outerRadius = 400;
 
-  // const diameter = outerRadius * 2;
-  const diameter = 980;
+  const diameter = outerRadius * 2;
+  // const diameter = 980;
   const innerRadius = outerRadius * 0.6;
 
   const [musicKeysObject, setMusicKeysObject] = useState(musicKeys);
@@ -56,11 +55,11 @@ export default function CircleOfFifths() {
   }
 
   return (
-    <div>
+    <div className='circle-of-fifths-container'>
       <svg
-        height={diameter}
-        width={diameter}>
-        <g className='circle-container' transform={`translate(${diameter/2},${diameter/2})`}>
+        height={diameter*1.1}
+        width={diameter*1.1}>
+        <g className='circle-container' transform={`translate(${diameter/2 + 25},${diameter/2 + 25})`}>
           <circle r={outerRadius} className="base-circle"/>
           <g className='circle-segments-container' transform='rotate(-15)'>
             {musicKeysObject.map((musicKey, index) => renderSegment(musicKey, index))}
