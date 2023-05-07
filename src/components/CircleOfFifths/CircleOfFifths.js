@@ -21,19 +21,7 @@ export default function CircleOfFifths() {
     setMusicKeysObject([...newMusicKeysObject]);
   }, [])
 
-  // const onClickHandler = () => {
-  //   console.log('Button was clicked!');
-  //   let newMusicKeysObject = musicKeysObject;
-  //   musicKeysObject.map((musicKey, index) => {
-  //     if (index === 0 || index === 11) {
-  //       newMusicKeysObject[index].segmentMetadata.selected = true;
-  //       setMusicKeysObject([...newMusicKeysObject]);
-  //     }
-  //   })
-  // }
-
   const onMouseUpHandler = (index) => {
-    console.log(index)
     let newMusicKeysObject = musicKeysObject;
     if (newMusicKeysObject[index].segmentMetadata.selected) {
       newMusicKeysObject[index].segmentMetadata.selected = false;
@@ -80,9 +68,6 @@ export default function CircleOfFifths() {
           </g>
         </g>
       </svg>
-      {/* <button onClick={onClickHandler}>
-        Click me!
-      </button> */}
     </div>
   )
 }
