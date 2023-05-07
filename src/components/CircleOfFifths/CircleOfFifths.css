@@ -7,14 +7,27 @@
   stroke-width: 5px;
 }
 
-.circle-segment path {
+.circle-segment.isVisible path {
   fill: #D7DCDF;
   stroke: black;
   stroke-width: 5px;
 }
 
-.circle-segment text {
+.circle-segment.isVisible text {
   font-size: 30px;
   justify-content: center;
   align-items: center;
 }
+
+.circle-segment path {
+  fill: red;
+  stroke: black;
+  stroke-width: 5px;
+}
+
+/* .circle-segment text {
+  font-size: 30px;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+} */

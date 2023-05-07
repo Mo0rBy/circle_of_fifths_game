@@ -6,7 +6,7 @@ var C_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    visible: false
+    isVisible: false
   },
   chords: [
     "C Major",
@@ -23,7 +23,7 @@ var G_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    visible: false
+    isVisible: false
   },
   chords: [
     "G Major",
@@ -40,7 +40,7 @@ var D_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    visible: false
+    isVisible: false
   },
   chords: [
     "D Major",
@@ -57,7 +57,7 @@ var A_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    visible: false
+    isVisible: false
   },
   chords: [
     "A Major",
@@ -74,7 +74,7 @@ var E_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    visible: false
+    isVisible: false
   },
   chords: [
     "E Major",
@@ -91,7 +91,7 @@ var B_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    visible: false
+    isVisible: false
   },
   chords: [
     "B Major",
@@ -108,7 +108,7 @@ var F_sharp_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    visible: false
+    isVisible: false
   },
   chords: [
     "F# Major",
@@ -125,7 +125,7 @@ var C_sharp_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    visible: false
+    isVisible: false
   },
   chords: [
     "C# Major",
@@ -142,7 +142,7 @@ var A_flat_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    visible: false
+    isVisible: false
   },
   chords: [
     "A♭ Major",
@@ -159,7 +159,7 @@ var E_flat_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    visible: false
+    isVisible: false
   },
   chords: [
     "E♭ Major",
@@ -176,7 +176,7 @@ var B_flat_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    visible: false
+    isVisible: false
   },
   chords: [
     "B♭ Major",
@@ -193,7 +193,7 @@ var F_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    visible: false
+    isVisible: false
   },
   chords: [
     "F Major",
