@@ -6,7 +6,12 @@ var C_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    isVisible: false
+    majorCircle: {
+      isVisible: false
+    },
+    minorCircle: {
+      isVisible: false
+    }
   },
   chords: [
     "C Major",
@@ -16,14 +21,19 @@ var C_Major = {
     "G Major",
     "A minor",
     "B diminished"
-  ]
+  ],
 }
 
 var G_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    isVisible: false
+    majorCircle: {
+      isVisible: false
+    },
+    minorCircle: {
+      isVisible: false
+    }
   },
   chords: [
     "G Major",
@@ -33,14 +43,19 @@ var G_Major = {
     "D Major",
     "E minor",
     "F# diminished"
-  ]
+  ],
 }
 
 var D_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    isVisible: false
+    majorCircle: {
+      isVisible: false
+    },
+    minorCircle: {
+      isVisible: false
+    }
   },
   chords: [
     "D Major",
@@ -50,14 +65,19 @@ var D_Major = {
     "A Major",
     "B minor",
     "C# diminished"
-  ]
+  ],
 }
 
 var A_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    isVisible: false
+    majorCircle: {
+      isVisible: false
+    },
+    minorCircle: {
+      isVisible: false
+    }
   },
   chords: [
     "A Major",
@@ -67,14 +87,19 @@ var A_Major = {
     "E Major",
     "F# minor",
     "G# diminished"
-  ]
+  ],
 }
 
 var E_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    isVisible: false
+    majorCircle: {
+      isVisible: false
+    },
+    minorCircle: {
+      isVisible: false
+    }
   },
   chords: [
     "E Major",
@@ -84,14 +109,19 @@ var E_Major = {
     "B Major",
     "C# minor",
     "D# diminished"
-  ]
+  ],
 }
 
 var B_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    isVisible: false
+    majorCircle: {
+      isVisible: false
+    },
+    minorCircle: {
+      isVisible: false
+    }
   },
   chords: [
     "B Major",
@@ -101,14 +131,19 @@ var B_Major = {
     "F# Major",
     "G# minor",
     "A# diminished"
-  ]
+  ],
 }
 
 var F_sharp_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    isVisible: false
+    majorCircle: {
+      isVisible: false
+    },
+    minorCircle: {
+      isVisible: false
+    }
   },
   chords: [
     "F# Major",
@@ -118,14 +153,19 @@ var F_sharp_Major = {
     "C# Major",
     "D# minor",
     "E# diminished"
-  ]
+  ],
 }
 
 var C_sharp_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    isVisible: false
+    majorCircle: {
+      isVisible: false
+    },
+    minorCircle: {
+      isVisible: false
+    }
   },
   chords: [
     "C# Major",
@@ -135,14 +175,19 @@ var C_sharp_Major = {
     "G# Major",
     "A# minor",
     "B# diminished"
-  ]
+  ],
 }
 
 var A_flat_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    isVisible: false
+    majorCircle: {
+      isVisible: false
+    },
+    minorCircle: {
+      isVisible: false
+    }
   },
   chords: [
     "A♭ Major",
@@ -152,14 +197,19 @@ var A_flat_Major = {
     "E♭ Major",
     "F minor",
     "G diminished"
-  ]
+  ],
 }
 
 var E_flat_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    isVisible: false
+    majorCircle: {
+      isVisible: false
+    },
+    minorCircle: {
+      isVisible: false
+    }
   },
   chords: [
     "E♭ Major",
@@ -169,14 +219,19 @@ var E_flat_Major = {
     "B♭ Major",
     "C minor",
     "D diminished"
-  ]
+  ],
 }
 
 var B_flat_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    isVisible: false
+    majorCircle: {
+      isVisible: false
+    },
+    minorCircle: {
+      isVisible: false
+    }
   },
   chords: [
     "B♭ Major",
@@ -186,14 +241,19 @@ var B_flat_Major = {
     "F Major",
     "G minor",
     "A diminished"
-  ]
+  ],
 }
 
 var F_Major = {
   segmentMetadata: {
     startAngle: null,
     endAngle: null,
-    isVisible: false
+    majorCircle: {
+      isVisible: false
+    },
+    minorCircle: {
+      isVisible: false
+    }
   },
   chords: [
     "F Major",
@@ -203,7 +263,7 @@ var F_Major = {
     "C Major",
     "D minor",
     "E diminished"
-  ]
+  ],
 }
 
 var musicKeys = [
