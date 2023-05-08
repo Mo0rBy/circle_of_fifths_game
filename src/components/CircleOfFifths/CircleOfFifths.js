@@ -1,6 +1,6 @@
 import './CircleOfFifths.css';
 import { useEffect, useState } from 'react';
-import * as d3 from 'd3';
+import { arc } from 'd3';
 import musicKeys from '../../MusicKeys';
 
 export default function CircleOfFifths({ outerRadius }) {
@@ -9,6 +9,7 @@ export default function CircleOfFifths({ outerRadius }) {
   const innerRadius = outerRadius * 0.7;
   const innerRadius2 = outerRadius * 0.4;
 
+  const [mode, setMode] = useState('ready');
   const [musicKeysObject, setMusicKeysObject] = useState(musicKeys);
 
   useEffect(() => {
@@ -21,7 +22,7 @@ export default function CircleOfFifths({ outerRadius }) {
   }, [])
 
   const calculateArc = (innerRadius, outerRadius, startAngle, endAngle) => {
-    return d3.arc()
+    return arc()
       .innerRadius(innerRadius)
       .outerRadius(outerRadius)
       .startAngle(startAngle)
@@ -57,7 +58,7 @@ export default function CircleOfFifths({ outerRadius }) {
               d={arc.apply()} // apply() is needed to generate the string that goes into the 'd' attribute
             />
             <text x={arcCenterX} y={arcCenterY} transform={`rotate(15, ${arcCenterX}, ${arcCenterY})`}>
-              {musicKey.chords[0].replace('Major', '')}
+              {musicKey.chords[0].replace(' Major', '')}
             </text>
           </g>
   }
@@ -82,13 +83,19 @@ export default function CircleOfFifths({ outerRadius }) {
         height={diameter*1.1}
         width={diameter*1.1}>
         <g className='circle-container' transform={`translate(${diameter/2 + 25},${diameter/2 + 25}) rotate(-15)`}>
-          <circle r={outerRadius} className="base-circle"/>
+          <circle r={outerRadius} className='base-circle'/>
           <g className='outer-circle-segments-container'>
             {musicKeysObject.map((musicKey, index) => renderMajorSegment(musicKey, index))}
           </g>
           <g className='inner-circle-segments-container'>
             {musicKeysObject.map((musicKey, index) => renderMinorSegment(musicKey, index))}
           </g>
+          {mode === 'ready' && 
+            <g id='play-button-container' onMouseUp={() => {setMode('playing')}}>
+              <circle r={innerRadius2} id='play-button'/>
+              <text id='play-button-text' transform='rotate(15)'>PLAY GAME</text>
+            </g>
+          }
         </g>
       </svg>
     </div>

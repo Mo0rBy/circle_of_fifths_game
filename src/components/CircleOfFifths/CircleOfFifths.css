@@ -33,3 +33,16 @@
     dominant-baseline: central; /* This still works, VSCode does not recognise the property */
   }
 }
+
+#play-button {
+  fill: white;
+  stroke: black;
+  stroke-width: 5px;
+}
+
+#play-button-text {
+  fill: black;
+  font-size: 40px;
+  text-anchor: middle;
+  dominant-baseline: central; /* This still works, VSCode does not recognise the property */
+}
