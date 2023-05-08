@@ -20,6 +20,14 @@ export default function CircleOfFifths({ outerRadius }) {
     setMusicKeysObject([...newMusicKeysObject]);
   }, [])
 
+  const calculateArc = (innerRadius, outerRadius, startAngle, endAngle) => {
+    return d3.arc()
+      .innerRadius(innerRadius)
+      .outerRadius(outerRadius)
+      .startAngle(startAngle)
+      .endAngle(endAngle);
+  }
+
   const majorOnMouseUpHandler = (index) => {
     let newMusicKeysObject = musicKeysObject;
     if (newMusicKeysObject[index].segmentMetadata.majorCircle.isVisible) {
@@ -40,14 +48,6 @@ export default function CircleOfFifths({ outerRadius }) {
     setMusicKeysObject([...newMusicKeysObject]);
   }
 
-  const calculateArc = (innerRadius, outerRadius, startAngle, endAngle) => {
-    return d3.arc()
-      .innerRadius(innerRadius)
-      .outerRadius(outerRadius)
-      .startAngle(startAngle)
-      .endAngle(endAngle);
-  }
-
   const renderMajorSegment = (musicKey, index) => {
     let arc = calculateArc(outerRadius, innerRadius, musicKey.segmentMetadata.startAngle, musicKey.segmentMetadata.endAngle);
     let [arcCenterX, arcCenterY] = arc.centroid();
@@ -56,7 +56,6 @@ export default function CircleOfFifths({ outerRadius }) {
             <path 
               d={arc.apply()} // apply() is needed to generate the string that goes into the 'd' attribute
             />
-            {/* Need to adjust center X position due to increased font-size */}
             <text x={arcCenterX} y={arcCenterY} transform={`rotate(15, ${arcCenterX}, ${arcCenterY})`}>
               {musicKey.chords[0].replace('Major', '')}
             </text>
@@ -71,7 +70,6 @@ export default function CircleOfFifths({ outerRadius }) {
             <path 
               d={arc.apply()} // apply() is needed to generate the string that goes into the 'd' attribute
             />
-            {/* Need to adjust center X position due to increased font-size */}
             <text x={arcCenterX} y={arcCenterY} transform={`rotate(15, ${arcCenterX}, ${arcCenterY})`}>
               {musicKey.chords[5].replace(' minor', 'm')}
             </text>
