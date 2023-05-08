@@ -29,7 +29,7 @@
   }
   > text {
     font-size: 30px;
-    justify-content: center;
-    align-items: center;
+    text-anchor: middle;
+    dominant-baseline: central; /* This still works, VSCode does not recognise the property */
   }
 }

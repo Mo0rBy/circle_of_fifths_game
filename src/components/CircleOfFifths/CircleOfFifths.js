@@ -57,7 +57,7 @@ export default function CircleOfFifths({ outerRadius }) {
               d={arc.apply()} // apply() is needed to generate the string that goes into the 'd' attribute
             />
             {/* Need to adjust center X position due to increased font-size */}
-            <text x={arcCenterX-10} y={arcCenterY} rotate={15}>
+            <text x={arcCenterX} y={arcCenterY} transform={`rotate(15, ${arcCenterX}, ${arcCenterY})`}>
               {musicKey.chords[0].replace('Major', '')}
             </text>
           </g>
@@ -72,8 +72,8 @@ export default function CircleOfFifths({ outerRadius }) {
               d={arc.apply()} // apply() is needed to generate the string that goes into the 'd' attribute
             />
             {/* Need to adjust center X position due to increased font-size */}
-            <text x={arcCenterX-10} y={arcCenterY} rotate={15}>
-              {musicKey.chords[5].replace('minor', '')}
+            <text x={arcCenterX} y={arcCenterY} transform={`rotate(15, ${arcCenterX}, ${arcCenterY})`}>
+              {musicKey.chords[5].replace(' minor', 'm')}
             </text>
           </g>
   }
@@ -83,12 +83,12 @@ export default function CircleOfFifths({ outerRadius }) {
       <svg
         height={diameter*1.1}
         width={diameter*1.1}>
-        <g className='circle-container' transform={`translate(${diameter/2 + 25},${diameter/2 + 25})`}>
+        <g className='circle-container' transform={`translate(${diameter/2 + 25},${diameter/2 + 25}) rotate(-15)`}>
           <circle r={outerRadius} className="base-circle"/>
-          <g className='outer-circle-segments-container' transform='rotate(-15)'>
+          <g className='outer-circle-segments-container'>
             {musicKeysObject.map((musicKey, index) => renderMajorSegment(musicKey, index))}
           </g>
-          <g className='inner-circle-segments-container' transform='rotate(-15)'>
+          <g className='inner-circle-segments-container'>
             {musicKeysObject.map((musicKey, index) => renderMinorSegment(musicKey, index))}
           </g>
         </g>
