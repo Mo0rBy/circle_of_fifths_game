@@ -11,6 +11,7 @@ export default function CircleOfFifths({ outerRadius }) {
 
   const [mode, setMode] = useState('ready');
   const [musicKeysObject, setMusicKeysObject] = useState(musicKeys);
+  const [userAnswer, setUserAnswer] = useState(null);
 
   useEffect(() => {
     let newMusicKeysObject = musicKeysObject;
@@ -77,6 +78,21 @@ export default function CircleOfFifths({ outerRadius }) {
           </g>
   }
 
+  const playFunction = () => {
+    let newMusicKeysObject = musicKeysObject;
+    let segmentIndex = Math.round(Math.random() * 11);
+    if (Math.random() >= 0.5) { // Modify the Major circle
+      newMusicKeysObject[segmentIndex].segmentMetadata.majorCircle.isVisible = false;
+    } else { // Modify the minor circle
+      newMusicKeysObject[segmentIndex].segmentMetadata.minorCircle.isVisible = false;
+    }
+  }
+
+  const handle = (event) => {
+    setUserAnswer(event.target.value)
+    console.log(event.target.value)
+  }
+
   return (
     <div className='circle-of-fifths-container'>
       <svg
@@ -94,10 +110,13 @@ export default function CircleOfFifths({ outerRadius }) {
             <g id='play-button-container' onMouseUp={() => {setMode('playing')}}>
               <circle r={innerRadius2} id='play-button'/>
               <text id='play-button-text' transform='rotate(15)'>PLAY GAME</text>
-            </g>
-          }
+            </g>}
+          {mode === 'playing' ? playFunction() : null}
         </g>
       </svg>
+      {mode === 'playing' &&
+        <input type='text' onChange={(event) => handle(event)}/>
+      }
     </div>
   )
 }
