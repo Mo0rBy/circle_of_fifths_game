@@ -7,11 +7,9 @@ export default function CircleOfFifths({ outerRadius }) {
 
   // TODO:
   // PLAN
-  // 1. Clicking 'PLAY GAME' button causes game to start (half done)
-  // 2. When game starts, 1 segment disappears, set this into app state
-  // 3. Player gives an answer, compare that to missing object stored in state.
-  // 4. If it is correct, something to indicate that the player is correct, then play again
-  // 5. If the player is correct, something to show they are wrong, keep playing
+  // 1. If player is correct, start a new round
+  // 2. If player is correct, whole circle turns green for 0.5 seconds, then start new round
+  // 3. If player is wrong, circle flashes red twice
 
   const diameter = outerRadius * 2;
   const innerRadius = outerRadius * 0.7;
@@ -92,6 +90,11 @@ export default function CircleOfFifths({ outerRadius }) {
     if (event.key === 'Enter') {
       if (event.target.value === abbreviateKeyFromChord(hiddenSegment.chords[index])) {
         console.log('CORRECT');
+        // Set both major and minor circles to true
+        // 1 will already be true so it makes no difference, sets the non-visible one to true
+        hiddenSegment.segmentMetadata.majorCircle.isVisible = true;
+        hiddenSegment.segmentMetadata.minorCircle.isVisible = true;
+        startRound();
       } else {
         console.log('WRONG');
       }
