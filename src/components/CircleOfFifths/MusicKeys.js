@@ -7,10 +7,10 @@ var C_Major = {
     startAngle: null,
     endAngle: null,
     majorCircle: {
-      isVisible: false
+      isVisible: true
     },
     minorCircle: {
-      isVisible: false
+      isVisible: true
     }
   },
   chords: [
@@ -29,10 +29,10 @@ var G_Major = {
     startAngle: null,
     endAngle: null,
     majorCircle: {
-      isVisible: false
+      isVisible: true
     },
     minorCircle: {
-      isVisible: false
+      isVisible: true
     }
   },
   chords: [
@@ -51,10 +51,10 @@ var D_Major = {
     startAngle: null,
     endAngle: null,
     majorCircle: {
-      isVisible: false
+      isVisible: true
     },
     minorCircle: {
-      isVisible: false
+      isVisible: true
     }
   },
   chords: [
@@ -73,10 +73,10 @@ var A_Major = {
     startAngle: null,
     endAngle: null,
     majorCircle: {
-      isVisible: false
+      isVisible: true
     },
     minorCircle: {
-      isVisible: false
+      isVisible: true
     }
   },
   chords: [
@@ -95,10 +95,10 @@ var E_Major = {
     startAngle: null,
     endAngle: null,
     majorCircle: {
-      isVisible: false
+      isVisible: true
     },
     minorCircle: {
-      isVisible: false
+      isVisible: true
     }
   },
   chords: [
@@ -117,10 +117,10 @@ var B_Major = {
     startAngle: null,
     endAngle: null,
     majorCircle: {
-      isVisible: false
+      isVisible: true
     },
     minorCircle: {
-      isVisible: false
+      isVisible: true
     }
   },
   chords: [
@@ -139,10 +139,10 @@ var F_sharp_Major = {
     startAngle: null,
     endAngle: null,
     majorCircle: {
-      isVisible: false
+      isVisible: true
     },
     minorCircle: {
-      isVisible: false
+      isVisible: true
     }
   },
   chords: [
@@ -161,10 +161,10 @@ var C_sharp_Major = {
     startAngle: null,
     endAngle: null,
     majorCircle: {
-      isVisible: false
+      isVisible: true
     },
     minorCircle: {
-      isVisible: false
+      isVisible: true
     }
   },
   chords: [
@@ -183,10 +183,10 @@ var A_flat_Major = {
     startAngle: null,
     endAngle: null,
     majorCircle: {
-      isVisible: false
+      isVisible: true
     },
     minorCircle: {
-      isVisible: false
+      isVisible: true
     }
   },
   chords: [
@@ -205,10 +205,10 @@ var E_flat_Major = {
     startAngle: null,
     endAngle: null,
     majorCircle: {
-      isVisible: false
+      isVisible: true
     },
     minorCircle: {
-      isVisible: false
+      isVisible: true
     }
   },
   chords: [
@@ -227,10 +227,10 @@ var B_flat_Major = {
     startAngle: null,
     endAngle: null,
     majorCircle: {
-      isVisible: false
+      isVisible: true
     },
     minorCircle: {
-      isVisible: false
+      isVisible: true
     }
   },
   chords: [
@@ -249,10 +249,10 @@ var F_Major = {
     startAngle: null,
     endAngle: null,
     majorCircle: {
-      isVisible: false
+      isVisible: true
     },
     minorCircle: {
-      isVisible: false
+      isVisible: true
     }
   },
   chords: [
