@@ -1,26 +1,28 @@
 import './CircleOfFifths.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { arc } from 'd3';
-import musicKeys from '../../MusicKeys';
+import musicKeys from './MusicKeys';
 
 export default function CircleOfFifths({ outerRadius }) {
+
+  // TODO:
+  // PLAN
+  // 1. Clicking 'PLAY GAME' button causes game to start (half done)
+  // 2. When game starts, 1 segment disappears, set this into app state
+  // 3. Player gives an answer, compare that to missing object stored in state.
+  // 4. If it is correct, something to indicate that the player is correct, then play again
+  // 5. If the player is correct, something to show they are wrong, keep playing
 
   const diameter = outerRadius * 2;
   const innerRadius = outerRadius * 0.7;
   const innerRadius2 = outerRadius * 0.4;
 
-  const [mode, setMode] = useState('ready');
-  const [musicKeysObject, setMusicKeysObject] = useState(musicKeys);
-  const [userAnswer, setUserAnswer] = useState(null);
+  const READY = 'ready';
+  const PLAYING = 'playing';
 
-  useEffect(() => {
-    let newMusicKeysObject = musicKeysObject;
-    for (let i=0; i<newMusicKeysObject.length; i++) {
-      newMusicKeysObject[i].segmentMetadata.majorCircle.isVisible = true;
-      newMusicKeysObject[i].segmentMetadata.minorCircle.isVisible = true;
-    }
-    setMusicKeysObject([...newMusicKeysObject]);
-  }, [])
+  const [mode, setMode] = useState(READY);
+  const [musicKeysObject, setMusicKeysObject] = useState(musicKeys);
+  const [hiddenSegment, setHiddenSegment] = useState(null);
 
   const calculateArc = (innerRadius, outerRadius, startAngle, endAngle) => {
     return arc()
@@ -30,36 +32,18 @@ export default function CircleOfFifths({ outerRadius }) {
       .endAngle(endAngle);
   }
 
-  const majorOnMouseUpHandler = (index) => {
-    let newMusicKeysObject = musicKeysObject;
-    if (newMusicKeysObject[index].segmentMetadata.majorCircle.isVisible) {
-      newMusicKeysObject[index].segmentMetadata.majorCircle.isVisible = false;
-    } else {
-      newMusicKeysObject[index].segmentMetadata.majorCircle.isVisible = true;
-    }
-    setMusicKeysObject([...newMusicKeysObject]);
-  }
-
-  const minorOnMouseUpHandler = (index) => {
-    let newMusicKeysObject = musicKeysObject;
-    if (newMusicKeysObject[index].segmentMetadata.minorCircle.isVisible) {
-      newMusicKeysObject[index].segmentMetadata.minorCircle.isVisible = false;
-    } else {
-      newMusicKeysObject[index].segmentMetadata.minorCircle.isVisible = true;
-    }
-    setMusicKeysObject([...newMusicKeysObject]);
-  }
-
+  /* ---------------------------- Render functions ---------------------------- */
   const renderMajorSegment = (musicKey, index) => {
     let arc = calculateArc(outerRadius, innerRadius, musicKey.segmentMetadata.startAngle, musicKey.segmentMetadata.endAngle);
     let [arcCenterX, arcCenterY] = arc.centroid();
 
-    return <g className={`circle-segment ${musicKey.segmentMetadata.majorCircle.isVisible ? 'isVisible': ''}`} key={index} onMouseUp={() => majorOnMouseUpHandler(index)}>
+    return <g className={`circle-segment ${musicKey.segmentMetadata.majorCircle.isVisible ? 'isVisible': ''}`} 
+              key={index}>
             <path 
               d={arc.apply()} // apply() is needed to generate the string that goes into the 'd' attribute
             />
             <text x={arcCenterX} y={arcCenterY} transform={`rotate(15, ${arcCenterX}, ${arcCenterY})`}>
-              {musicKey.chords[0].replace(' Major', '')}
+              {abbreviateKeyFromChord(musicKey.chords[0])}
             </text>
           </g>
   }
@@ -68,30 +52,52 @@ export default function CircleOfFifths({ outerRadius }) {
     let arc = calculateArc(innerRadius, innerRadius2, musicKey.segmentMetadata.startAngle, musicKey.segmentMetadata.endAngle);
     let [arcCenterX, arcCenterY] = arc.centroid();
 
-    return <g className={`circle-segment ${musicKey.segmentMetadata.minorCircle.isVisible ? 'isVisible': ''}`} key={index} onMouseUp={() => minorOnMouseUpHandler(index)}>
+    return <g className={`circle-segment ${musicKey.segmentMetadata.minorCircle.isVisible ? 'isVisible': ''}`} 
+              key={index}>
             <path 
               d={arc.apply()} // apply() is needed to generate the string that goes into the 'd' attribute
             />
             <text x={arcCenterX} y={arcCenterY} transform={`rotate(15, ${arcCenterX}, ${arcCenterY})`}>
-              {musicKey.chords[5].replace(' minor', 'm')}
+              {abbreviateKeyFromChord(musicKey.chords[5])}
             </text>
           </g>
   }
+  /* ------------------------------------ - ----------------------------------- */
+  const abbreviateKeyFromChord = (chordName) => {
+    return chordName.replace(' Major', '').replace(' minor', 'm');
+  }
 
-  const playFunction = () => {
+  const startRound = () => {
     let newMusicKeysObject = musicKeysObject;
     let segmentIndex = Math.round(Math.random() * 11);
     if (Math.random() >= 0.5) { // Modify the Major circle
       newMusicKeysObject[segmentIndex].segmentMetadata.majorCircle.isVisible = false;
+      setHiddenSegment({...newMusicKeysObject[segmentIndex], major: true})
     } else { // Modify the minor circle
       newMusicKeysObject[segmentIndex].segmentMetadata.minorCircle.isVisible = false;
+      setHiddenSegment({...newMusicKeysObject[segmentIndex], major: false})
     }
+    setMusicKeysObject([...newMusicKeysObject])
+    setMode(PLAYING)
   }
 
-  const handle = (event) => {
-    setUserAnswer(event.target.value)
-    console.log(event.target.value)
-  }
+  const handleInput = (event) => {
+    var index;
+    if (hiddenSegment.major) {
+      index = 0;
+    } else {
+      index = 5;
+    }
+
+    if (event.key === 'Enter') {
+      if (event.target.value === abbreviateKeyFromChord(hiddenSegment.chords[index])) {
+        console.log('CORRECT');
+      } else {
+        console.log('WRONG');
+      }
+    }
+  };
+
 
   return (
     <div className='circle-of-fifths-container'>
@@ -106,16 +112,15 @@ export default function CircleOfFifths({ outerRadius }) {
           <g className='inner-circle-segments-container'>
             {musicKeysObject.map((musicKey, index) => renderMinorSegment(musicKey, index))}
           </g>
-          {mode === 'ready' && 
-            <g id='play-button-container' onMouseUp={() => {setMode('playing')}}>
+          {mode === READY && 
+            <g id='play-button-container' onMouseUp={startRound}>
               <circle r={innerRadius2} id='play-button'/>
               <text id='play-button-text' transform='rotate(15)'>PLAY GAME</text>
             </g>}
-          {mode === 'playing' ? playFunction() : null}
         </g>
       </svg>
-      {mode === 'playing' &&
-        <input type='text' onChange={(event) => handle(event)}/>
+      {mode === PLAYING &&
+        <input placeholder='Your answer' onKeyDown={handleInput}></input>
       }
     </div>
   )
