@@ -6,15 +6,10 @@ import classNames from 'classnames';
 
 export default function CircleOfFifths({ outerRadius }) {
 
-  // TODO:
-  // PLAN
-  // 1. If player is correct, start a new round
-  // 2. If player is correct, whole circle turns green for 0.5 seconds, then start new round
-  // 3. If player is wrong, circle flashes red twice
-
   const diameter = outerRadius * 2;
   const innerRadius = outerRadius * 0.7;
   const innerRadius2 = outerRadius * 0.4;
+  const svgHeightWidth = diameter * 1.1; // Needs to be slightly larger than the diameter of the circle
 
   const READY = 'ready';
   const PLAYING = 'playing';
@@ -50,9 +45,12 @@ export default function CircleOfFifths({ outerRadius }) {
             <path 
               d={arc.apply()} // apply() is needed to generate the string that goes into the 'd' attribute
             />
-            <text x={arcCenterX} y={arcCenterY} transform={`rotate(15, ${arcCenterX}, ${arcCenterY})`}>
-              {abbreviateKeyFromChord(musicKey.chords[0])}
-            </text>
+            <text 
+              x={arcCenterX} 
+              y={arcCenterY} 
+              transform={`rotate(15, ${arcCenterX}, ${arcCenterY})`}
+              style={{fontSize: outerRadius*0.075}}
+            >{abbreviateKeyFromChord(musicKey.chords[0])}</text>
           </g>
   }
 
@@ -71,9 +69,12 @@ export default function CircleOfFifths({ outerRadius }) {
             <path 
               d={arc.apply()} // apply() is needed to generate the string that goes into the 'd' attribute
             />
-            <text x={arcCenterX} y={arcCenterY} transform={`rotate(15, ${arcCenterX}, ${arcCenterY})`}>
-              {abbreviateKeyFromChord(musicKey.chords[5])}
-            </text>
+            <text 
+              x={arcCenterX} 
+              y={arcCenterY} 
+              transform={`rotate(15, ${arcCenterX}, ${arcCenterY})`}
+              style={{fontSize: outerRadius*0.075}}
+            >{abbreviateKeyFromChord(musicKey.chords[5])}</text>
           </g>
   }
   /* ------------------------------------ - ----------------------------------- */
@@ -129,8 +130,6 @@ export default function CircleOfFifths({ outerRadius }) {
     }
   };
 
-  const svgHeightWidth = diameter * 1.1;
-
   return (
     <div className='circle-of-fifths-container'>
       <svg
@@ -147,7 +146,11 @@ export default function CircleOfFifths({ outerRadius }) {
           {mode === READY && 
             <g id='play-button-container' onMouseUp={startRound}>
               <circle r={innerRadius2} id='play-button'/>
-              <text id='play-button-text' transform='rotate(15)'>PLAY GAME</text>
+              <text 
+                id='play-button-text' 
+                transform='rotate(15)'
+                style={{fontSize: outerRadius*0.1}}
+              >PLAY GAME</text>
             </g>}
         </g>
       </svg>
@@ -157,6 +160,13 @@ export default function CircleOfFifths({ outerRadius }) {
           type='text'
           placeholder='Answer'
           onKeyDown={handleInput}
+          style={{
+            top: svgHeightWidth/2,
+            left: svgHeightWidth/2,
+            height: outerRadius/4,
+            width: outerRadius/2,
+            fontSize: outerRadius/8
+          }}
         />
       }
     </div>
