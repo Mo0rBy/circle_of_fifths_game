@@ -67,8 +67,15 @@ export default function CircleOfFifths({ outerRadius }) {
 
   const startRound = () => {
     let newMusicKeysObject = musicKeysObject;
+    // Reset segment visibilties (show all segments)
+    for (let i=0; i<newMusicKeysObject.length; i++) {
+      newMusicKeysObject[i].segmentMetadata.majorCircle.isVisible = true;
+      newMusicKeysObject[i].segmentMetadata.minorCircle.isVisible = true;
+    }
+
+    // Hide 1 segment
     let segmentIndex = Math.round(Math.random() * 11);
-    if (Math.random() >= 0.5) { // Modify the Major circle
+    if ((Math.random() - 1) >= 0) { // Modify the Major circle
       newMusicKeysObject[segmentIndex].segmentMetadata.majorCircle.isVisible = false;
       setHiddenSegment({...newMusicKeysObject[segmentIndex], major: true})
     } else { // Modify the minor circle
@@ -90,10 +97,6 @@ export default function CircleOfFifths({ outerRadius }) {
     if (event.key === 'Enter') {
       if (event.target.value === abbreviateKeyFromChord(hiddenSegment.chords[index])) {
         console.log('CORRECT');
-        // Set both major and minor circles to true
-        // 1 will already be true so it makes no difference, sets the non-visible one to true
-        hiddenSegment.segmentMetadata.majorCircle.isVisible = true;
-        hiddenSegment.segmentMetadata.minorCircle.isVisible = true;
         startRound();
       } else {
         console.log('WRONG');
