@@ -5,8 +5,6 @@ const circleRadius = 400
 
 export default function App() {
   return (
-    <div>
-      <CircleOfFifths outerRadius={circleRadius}/>
-    </div>
+    <CircleOfFifths outerRadius={circleRadius}/>
   );
 }

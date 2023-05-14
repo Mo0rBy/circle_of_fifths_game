@@ -1,6 +1,7 @@
 .circle-of-fifths-container {
   margin: 50px;
   text-align: center;
+  position: relative;
 }
 
 .circle-container {
@@ -36,7 +37,7 @@
 
 .circle-segment.isVisible.correct-answer {
   > path {
-    fill: green;
+    fill: #28db14;
     stroke: black;
     stroke-width: 5px;
   }
@@ -49,7 +50,7 @@
 
 .circle-segment.isVisible.wrong-answer {
   > path {
-    fill: red;
+    fill: #f71302;
     stroke: black;
     stroke-width: 5px;
   }
@@ -71,4 +72,15 @@
   font-size: 40px;
   text-anchor: middle;
   dominant-baseline: central; /* This still works, VSCode does not recognise the property */
+}
+
+#user-answer-input {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100px;
+  width: 200px;
+  font-size: 50px;
+  text-align: center;
 }

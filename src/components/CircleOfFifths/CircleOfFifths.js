@@ -129,12 +129,14 @@ export default function CircleOfFifths({ outerRadius }) {
     }
   };
 
+  const svgHeightWidth = diameter * 1.1;
+
   return (
     <div className='circle-of-fifths-container'>
       <svg
-        height={diameter*1.1}
-        width={diameter*1.1}>
-        <g className='circle-container' transform={`translate(${diameter/2 + 25},${diameter/2 + 25}) rotate(-15)`}>
+        height={svgHeightWidth}
+        width={svgHeightWidth}>
+        <g className='circle-container' transform={`translate(${svgHeightWidth/2},${svgHeightWidth/2}) rotate(-15)`}>
           <circle r={outerRadius} className='base-circle'/>
           <g className='outer-circle-segments-container'>
             {musicKeysObject.map((musicKey, index) => renderMajorSegment(musicKey, index))}
@@ -150,7 +152,12 @@ export default function CircleOfFifths({ outerRadius }) {
         </g>
       </svg>
       {mode === PLAYING &&
-        <input placeholder='Your answer' onKeyDown={handleInput}></input>
+        <input 
+          id='user-answer-input'
+          type='text'
+          placeholder='Answer'
+          onKeyDown={handleInput}
+        />
       }
     </div>
   )
