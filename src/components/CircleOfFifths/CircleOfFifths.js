@@ -2,6 +2,7 @@ import './CircleOfFifths.css';
 import { useState } from 'react';
 import { arc } from 'd3';
 import musicKeys from './MusicKeys';
+import classNames from 'classnames';
 
 export default function CircleOfFifths({ outerRadius }) {
 
@@ -17,10 +18,13 @@ export default function CircleOfFifths({ outerRadius }) {
 
   const READY = 'ready';
   const PLAYING = 'playing';
+  const CORRECT = 'correct';
+  const WRONG = 'wrong';
 
   const [mode, setMode] = useState(READY);
   const [musicKeysObject, setMusicKeysObject] = useState(musicKeys);
   const [hiddenSegment, setHiddenSegment] = useState(null);
+  const [userAnswer, setUserAnswer] = useState(null);
 
   const calculateArc = (innerRadius, outerRadius, startAngle, endAngle) => {
     return arc()
@@ -35,8 +39,14 @@ export default function CircleOfFifths({ outerRadius }) {
     let arc = calculateArc(outerRadius, innerRadius, musicKey.segmentMetadata.startAngle, musicKey.segmentMetadata.endAngle);
     let [arcCenterX, arcCenterY] = arc.centroid();
 
-    return <g className={`circle-segment ${musicKey.segmentMetadata.majorCircle.isVisible ? 'isVisible': ''}`} 
-              key={index}>
+    var segmentClasses = classNames(
+      'circle-segment',
+      {'isVisible': musicKey.segmentMetadata.majorCircle.isVisible},
+      {'correct-answer': userAnswer === CORRECT},
+      {'wrong-answer': userAnswer === WRONG}
+    );
+
+    return <g className={segmentClasses} key={index}>
             <path 
               d={arc.apply()} // apply() is needed to generate the string that goes into the 'd' attribute
             />
@@ -50,8 +60,14 @@ export default function CircleOfFifths({ outerRadius }) {
     let arc = calculateArc(innerRadius, innerRadius2, musicKey.segmentMetadata.startAngle, musicKey.segmentMetadata.endAngle);
     let [arcCenterX, arcCenterY] = arc.centroid();
 
-    return <g className={`circle-segment ${musicKey.segmentMetadata.minorCircle.isVisible ? 'isVisible': ''}`} 
-              key={index}>
+    var segmentClasses = classNames(
+      'circle-segment',
+      {'isVisible': musicKey.segmentMetadata.minorCircle.isVisible},
+      {'correct-answer': userAnswer === CORRECT},
+      {'wrong-answer': userAnswer === WRONG}
+    );
+
+    return <g className={segmentClasses} key={index}>
             <path 
               d={arc.apply()} // apply() is needed to generate the string that goes into the 'd' attribute
             />
@@ -96,14 +112,22 @@ export default function CircleOfFifths({ outerRadius }) {
 
     if (event.key === 'Enter') {
       if (event.target.value === abbreviateKeyFromChord(hiddenSegment.chords[index])) {
-        console.log('CORRECT');
-        startRound();
+        // Show the correct answer segment (can modify both major and minor circle, 1 will already be visible anyway)
+        hiddenSegment.segmentMetadata.majorCircle.isVisible = true;
+        hiddenSegment.segmentMetadata.minorCircle.isVisible = true;
+        setUserAnswer(CORRECT);
+        setTimeout(() => {
+          setUserAnswer(null);
+          startRound();
+        }, 1000);
       } else {
-        console.log('WRONG');
+        setUserAnswer(WRONG);
+        setTimeout(() => {
+          setUserAnswer(null);
+        }, 1000);
       }
     }
   };
-
 
   return (
     <div className='circle-of-fifths-container'>

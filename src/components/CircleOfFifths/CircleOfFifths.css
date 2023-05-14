@@ -34,6 +34,32 @@
   }
 }
 
+.circle-segment.isVisible.correct-answer {
+  > path {
+    fill: green;
+    stroke: black;
+    stroke-width: 5px;
+  }
+  > text {
+    font-size: 30px;
+    text-anchor: middle;
+    dominant-baseline: central; /* This still works, VSCode does not recognise the property */
+  }
+}
+
+.circle-segment.isVisible.wrong-answer {
+  > path {
+    fill: red;
+    stroke: black;
+    stroke-width: 5px;
+  }
+  > text {
+    font-size: 30px;
+    text-anchor: middle;
+    dominant-baseline: central; /* This still works, VSCode does not recognise the property */
+  }
+}
+
 #play-button {
   fill: white;
   stroke: black;
