@@ -1,5 +1,5 @@
 import './CircleOfFifths.css';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { arc } from 'd3';
 import musicKeys from './MusicKeys';
 import classNames from 'classnames';
@@ -22,6 +22,8 @@ export default function CircleOfFifths({ outerRadius }) {
   const [musicKeysObject, setMusicKeysObject] = useState(musicKeys);
   const [hiddenSegment, setHiddenSegment] = useState(null);
   const [userAnswer, setUserAnswer] = useState(null);
+
+  const inputRef = useRef(null);
 
   const calculateArc = (innerRadius, outerRadius, startAngle, endAngle) => {
     return arc()
@@ -131,6 +133,7 @@ export default function CircleOfFifths({ outerRadius }) {
           setUserAnswer(null);
         }, 1000);
       }
+      inputRef.current.value = '';
     }
   };
 
@@ -164,6 +167,7 @@ export default function CircleOfFifths({ outerRadius }) {
           type='text'
           placeholder='Answer'
           onKeyDown={handleInput}
+          ref={inputRef}
           style={{
             top: svgHeightWidth/2,
             left: svgHeightWidth/2,
