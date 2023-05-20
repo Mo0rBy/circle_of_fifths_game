@@ -6,6 +6,8 @@ import classNames from 'classnames';
 
 export default function CircleOfFifths({ outerRadius }) {
 
+  // TODO: Need to find a better way to hide path and text elements when they need to be hidden
+
   const diameter = outerRadius * 2;
   const innerRadius = outerRadius * 0.7;
   const innerRadius2 = outerRadius * 0.4;
@@ -37,6 +39,7 @@ export default function CircleOfFifths({ outerRadius }) {
     var segmentClasses = classNames(
       'circle-segment',
       {'isVisible': musicKey.segmentMetadata.majorCircle.isVisible},
+      {'notVisible': !musicKey.segmentMetadata.majorCircle.isVisible},
       {'correct-answer': userAnswer === CORRECT},
       {'wrong-answer': userAnswer === WRONG}
     );
@@ -61,6 +64,7 @@ export default function CircleOfFifths({ outerRadius }) {
     var segmentClasses = classNames(
       'circle-segment',
       {'isVisible': musicKey.segmentMetadata.minorCircle.isVisible},
+      {'notVisible': !musicKey.segmentMetadata.minorCircle.isVisible},
       {'correct-answer': userAnswer === CORRECT},
       {'wrong-answer': userAnswer === WRONG}
     );

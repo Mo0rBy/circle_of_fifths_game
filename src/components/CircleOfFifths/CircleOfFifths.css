@@ -17,18 +17,29 @@
   stroke-width: 5px;
 }
 
-.circle-segment {
-  visibility: none;
-}
-
 .circle-segment.isVisible {
-  visibility: visible;
   > path {
+    visibility: visible;
     fill: #D7DCDF;
     stroke: black;
     stroke-width: 5px;
   }
   > text {
+    visibility: visible;
+    text-anchor: middle;
+    dominant-baseline: central; /* This still works, VSCode does not recognise the property */
+  }
+}
+
+.circle-segment.notVisible {
+  > path {
+    visibility: none;
+    fill: black;
+    stroke: black;
+    stroke-width: 5px;
+  }
+  > text {
+    display: none;
     text-anchor: middle;
     dominant-baseline: central; /* This still works, VSCode does not recognise the property */
   }
